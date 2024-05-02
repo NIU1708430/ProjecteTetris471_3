@@ -1,1 +1,3 @@
-# ProjecteTetris471_3
+# Primera entrega del projecte de metodologia de la programació.
+# Joel Rillo Fernández
+# NIU: 1708430
