@@ -7,50 +7,32 @@ ifstream& operator>> (ifstream& input, ColorFigura& tile)
     switch (intTile)
     {
         case 0:
-        {
             tile = COLOR_NEGRE;
             break;
-        }
-        case 1:
-        {
+        case 1 :
             tile = COLOR_GROC;
             break;
-        }
-        case 2:
-        {
+        case 2 :
             tile = COLOR_BLAUCEL;
             break;
-        }
-        case 3:
-        {
+        case 3 :
             tile = COLOR_MAGENTA;
             break;
-        }
-        case 4:
-        {
+        case 4 :
             tile = COLOR_TARONJA;
             break;
-        }
-        case 5:
-        {
+        case 5 :
             tile = COLOR_BLAUFOSC;
             break;
-        }
-        case 6:
-        {
+        case 6 :
             tile = COLOR_VERMELL;
             break;
-        }
-        case 7:
-        {
+        case 7 :
             tile = COLOR_VERD;
             break;
-        }
-        default:
-        {
+        default :
             tile = NO_COLOR;
             break;
-        }
     }
     return input;
 }
