@@ -5,51 +5,39 @@ ifstream& operator>> (ifstream& input, Figura& figura)
     int intFigura;
     TipusFigura tipusFigura;
     int fila, columna, rotacio;
+
     input >> intFigura >> fila >> columna >> rotacio;
+
     switch (intFigura)
     {
-        case 1:
-        {
+        case 1 :
             tipusFigura = FIGURA_O;
             break;
-        }
-        case 2:
-        {
+        case 2 :
             tipusFigura = FIGURA_I;
             break;
-        }
-        case 3:
-        {
+        case 3 :
             tipusFigura = FIGURA_T;
             break;
-        }
-        case 4:
-        {
+        case 4 :
             tipusFigura = FIGURA_L;
             break;
-        }
-        case 5:
-        {
+        case 5 :
             tipusFigura = FIGURA_J;
             break;
-        }
-        case 6:
-        {
+        case 6 :
             tipusFigura = FIGURA_Z;
             break;
-        }
-        case 7:
-        {
+        case 7 :
             tipusFigura = FIGURA_S;
             break;
-        }
-        default:
-        {
+        default :
             tipusFigura = NO_FIGURA;
             break;
-        }
     }
+
     figura.inicialitza(tipusFigura, fila, columna, rotacio);
+
     return input;
 }
 
@@ -59,6 +47,7 @@ void Figura::inicialitza(TipusFigura figura, int fila, int columna, int rotacio)
     m_fila = fila;
     m_columna = columna;
     actualitzaForma();
+
     for(int i = 0; i < rotacio; i++)
         girHorari();  
 }
@@ -66,29 +55,23 @@ void Figura::inicialitza(TipusFigura figura, int fila, int columna, int rotacio)
 int Figura::getOffset(int direccio) const
 {
     int offset = 0;
+
     switch (direccio)
     {
-        case 0:
-        {
+        case 0 :
             offset = m_offsetDalt;
             break;
-        }
-        case 1:
-        {
+        case 1 :
             offset = m_offsetDret;
             break;
-        }
-        case 2:
-        {
+        case 2 :
             offset = m_offsetBaix;
             break;
-        }
-        case 3:
-        {
+        case 3 :
             offset = m_offsetEsq;
             break;
-        }
     }
+
     return offset;
 }
 
@@ -141,14 +124,16 @@ void Figura::actualitzaForma()
         m_offsetDret = 0;
         m_offsetDalt = 0;
         m_offsetBaix = 0;
-    } else if (m_figura == FIGURA_I)
+    }
+    else if (m_figura == FIGURA_I)
     {
         m_longCostat = 4;
         m_offsetEsq = 0;
         m_offsetDret = 0;
         m_offsetDalt = 1;
         m_offsetBaix = 2;
-    } else
+    }
+    else
     {
         m_longCostat = 3;
         m_offsetEsq = 0;
@@ -157,71 +142,7 @@ void Figura::actualitzaForma()
         m_offsetBaix = 1;
     }
     
-    switch(m_figura)
-    {
-        case FIGURA_O:
-        {
-            ColorFigura grid[MAX_ALCADA][MAX_AMPLADA] = {{COLOR_GROC, COLOR_GROC, NO_COLOR, NO_COLOR}, {COLOR_GROC, COLOR_GROC, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}};
-            for (int i = 0; i < MAX_ALCADA; i++)
-                for (int j = 0; j < MAX_AMPLADA; j++)
-                    m_forma[i][j] = grid[i][j];
-            break;
-        }
-        case FIGURA_I:
-        {
-            ColorFigura grid[MAX_ALCADA][MAX_AMPLADA] = {{NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {COLOR_BLAUCEL, COLOR_BLAUCEL, COLOR_BLAUCEL, COLOR_BLAUCEL}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}};
-            for (int i = 0; i < MAX_ALCADA; i++)
-                for (int j = 0; j < MAX_AMPLADA; j++)
-                    m_forma[i][j] = grid[i][j];
-            break;
-        }
-        case FIGURA_T:
-        {
-            ColorFigura grid[MAX_ALCADA][MAX_AMPLADA] = {{NO_COLOR, COLOR_MAGENTA, NO_COLOR, NO_COLOR}, {COLOR_MAGENTA, COLOR_MAGENTA, COLOR_MAGENTA, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}};
-            for (int i = 0; i < MAX_ALCADA; i++)
-                for (int j = 0; j < MAX_AMPLADA; j++)
-                    m_forma[i][j] = grid[i][j];
-            break;
-        }
-        case FIGURA_L:
-        {
-            ColorFigura grid[MAX_ALCADA][MAX_AMPLADA] = {{NO_COLOR, NO_COLOR, COLOR_TARONJA, NO_COLOR}, {COLOR_TARONJA, COLOR_TARONJA, COLOR_TARONJA, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}};
-            for (int i = 0; i < MAX_ALCADA; i++)
-                for (int j = 0; j < MAX_AMPLADA; j++)
-                    m_forma[i][j] = grid[i][j];
-            break;
-        }
-        case FIGURA_J:
-        {
-            ColorFigura grid[MAX_ALCADA][MAX_AMPLADA] = {{COLOR_BLAUFOSC, NO_COLOR, NO_COLOR, NO_COLOR}, {COLOR_BLAUFOSC, COLOR_BLAUFOSC, COLOR_BLAUFOSC, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}};
-            for (int i = 0; i < MAX_ALCADA; i++)
-                for (int j = 0; j < MAX_AMPLADA; j++)
-                    m_forma[i][j] = grid[i][j];
-            break;
-        }
-        case FIGURA_Z:
-        {
-            ColorFigura grid[MAX_ALCADA][MAX_AMPLADA] = {{COLOR_VERMELL, COLOR_VERMELL, NO_COLOR, NO_COLOR}, {NO_COLOR, COLOR_VERMELL, COLOR_VERMELL, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}};
-            for (int i = 0; i < MAX_ALCADA; i++)
-                for (int j = 0; j < MAX_AMPLADA; j++)
-                    m_forma[i][j] = grid[i][j];
-            break;
-        }
-        case FIGURA_S:
-        {
-            ColorFigura grid[MAX_ALCADA][MAX_AMPLADA] = {{NO_COLOR, COLOR_VERD, COLOR_VERD, NO_COLOR}, {COLOR_VERD, COLOR_VERD, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}};
-            for (int i = 0; i < MAX_ALCADA; i++)
-                for (int j = 0; j < MAX_AMPLADA; j++)
-                    m_forma[i][j] = grid[i][j];
-            break;
-        }
-        default:
-        {
-            ColorFigura grid[MAX_ALCADA][MAX_AMPLADA] = {{NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}, {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}};
-            for (int i = 0; i < MAX_ALCADA; i++)
-                for (int j = 0; j < MAX_AMPLADA; j++)
-                    m_forma[i][j] = grid[i][j];
-            break;
-        }
-    }
+    for (int i = 0; i < MAX_ALCADA; i++)
+        for (int j = 0; j < MAX_AMPLADA; j++)
+            m_forma[i][j] = figures[m_figura][i][j];
 }

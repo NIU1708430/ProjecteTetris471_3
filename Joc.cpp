@@ -12,7 +12,7 @@ bool Joc::giraFigura(DireccioGir direccio)
 {
     bool gir = true;
     
-    if(direccio == GIR_HORARI)
+    if (direccio == GIR_HORARI)
     {
         m_figura.girHorari();
         if(m_tauler.colisio(m_figura))
@@ -24,7 +24,7 @@ bool Joc::giraFigura(DireccioGir direccio)
     else
     {
         m_figura.girAntihorari();
-        if(m_tauler.colisio(m_figura))
+        if (m_tauler.colisio(m_figura))
         {
             m_figura.girHorari();
             gir = false;
@@ -38,10 +38,10 @@ bool Joc::mouFigura(int dirX)
 {
     bool mov = true;
     
-    if(dirX > 0)
+    if (dirX > 0)
     {
         m_figura.movDreta();
-        if(m_tauler.colisio(m_figura))
+        if (m_tauler.colisio(m_figura))
         {
             m_figura.movEsquerra();
             mov = false;
@@ -50,7 +50,7 @@ bool Joc::mouFigura(int dirX)
     else
     {
         m_figura.movEsquerra();
-        if(m_tauler.colisio(m_figura))
+        if (m_tauler.colisio(m_figura))
         {
             m_figura.movDreta();
             mov = false;
@@ -63,7 +63,9 @@ bool Joc::mouFigura(int dirX)
 int Joc::baixaFigura()
 {
     int nFilesCompletes = 0;
+
     m_figura.baixa();
+
     if (m_tauler.colisio(m_figura))
     {
         m_figura.puja();

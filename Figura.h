@@ -32,6 +32,48 @@ typedef enum
 
 const int MAX_ALCADA = 4;
 const int MAX_AMPLADA = 4;
+const int nTipusFigura = 8;
+const ColorFigura figures[nTipusFigura][MAX_ALCADA][MAX_AMPLADA] = { {
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}
+    }, {
+    {COLOR_GROC, COLOR_GROC, NO_COLOR, NO_COLOR},
+    {COLOR_GROC, COLOR_GROC, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}
+    }, {
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {COLOR_BLAUCEL, COLOR_BLAUCEL, COLOR_BLAUCEL, COLOR_BLAUCEL},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}
+    }, {
+    {NO_COLOR, COLOR_MAGENTA, NO_COLOR, NO_COLOR},
+    {COLOR_MAGENTA, COLOR_MAGENTA, COLOR_MAGENTA, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}
+    }, {
+    {NO_COLOR, NO_COLOR, COLOR_TARONJA, NO_COLOR},
+    {COLOR_TARONJA, COLOR_TARONJA, COLOR_TARONJA, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}
+    }, {
+    {COLOR_BLAUFOSC, NO_COLOR, NO_COLOR, NO_COLOR},
+    {COLOR_BLAUFOSC, COLOR_BLAUFOSC, COLOR_BLAUFOSC, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}
+    }, {
+    {COLOR_VERMELL, COLOR_VERMELL, NO_COLOR, NO_COLOR},
+    {NO_COLOR, COLOR_VERMELL, COLOR_VERMELL, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}
+    }, {
+    {NO_COLOR, COLOR_VERD, COLOR_VERD, NO_COLOR},
+    {COLOR_VERD, COLOR_VERD, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR},
+    {NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR}
+    } };
 
 typedef enum
 {
@@ -42,8 +84,8 @@ typedef enum
 class Figura
 {
 public:
-    Figura() { m_figura = NO_FIGURA; }
-    Figura(TipusFigura figura, int fila, int columna) { m_figura = figura; m_fila = fila; m_columna = columna; }
+    Figura() { inicialitza(NO_FIGURA, 0, 0, 0); }
+    Figura(TipusFigura figura, int fila, int columna, int rotacio) { inicialitza(figura, fila, columna, rotacio); }
     ~Figura() {}
     
     void inicialitza(TipusFigura figura, int fila, int columna, int rotacio);

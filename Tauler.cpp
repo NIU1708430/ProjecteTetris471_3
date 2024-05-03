@@ -4,7 +4,7 @@ ifstream& operator>> (ifstream& input, ColorFigura& tile)
 {
     int intTile;
     input >> intTile;
-    switch(intTile)
+    switch (intTile)
     {
         case 0:
         {
@@ -87,14 +87,15 @@ bool Tauler::colisio(const Figura& figura)
     bool choca = false;
     
     //Es comprova que la figura no surti del tauler
-    if (i < 0 - figura.getOffset(0) || j < 0 - figura.getOffset(3) || i + figura.getLongCostat() - figura.getOffset(2) > MAX_FILA || j + figura.getLongCostat() - figura.getOffset(1) > MAX_COL)
+    if (i < 0 - figura.getOffset(0) || j < 0 - figura.getOffset(3) ||
+        i + figura.getLongCostat() - figura.getOffset(2) > MAX_FILA || j + figura.getLongCostat() - figura.getOffset(1) > MAX_COL)
         choca = true;
     
     //Es comprova que la figura no es fusioni amb altres blocs del tauler
     int x = figura.getOffset(3), y = figura.getOffset(0);
     while (!choca && y < figura.getLongCostat() - figura.getOffset(2))
     {
-        while(!choca && x < figura.getLongCostat() - figura.getOffset(1))
+        while (!choca && x < figura.getLongCostat() - figura.getOffset(1))
         {
             if (figura.getBloc(y, x) != NO_COLOR && m_tauler[i + y][j + x] != COLOR_NEGRE)
                 choca = true;
